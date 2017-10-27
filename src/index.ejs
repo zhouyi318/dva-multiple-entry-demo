@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+  <div id="root"></div>
+  <% let [cssObj,jsObj,reg] = [htmlWebpackPlugin.files.css,htmlWebpackPlugin.files.js,new RegExp("/")] %>
+
+  <% for(let n=0; n<cssObj.length; n++) {%>
+    <% if( reg.test(cssObj[n]) ) { %>
+        <link rel="stylesheet" href="<%= cssObj[n].split('/')[1] %>">
+    <% } else { %>
+        <link rel="stylesheet" href="../<%= cssObj[n] %>">
+    <% } %>
+  <% } %> 
+
+  <%  for(let j=0; j<jsObj.length; j++) { %>
+    <% if( reg.test(jsObj[j]) ) {%>
+        <script type="text/javascript" src="<%= jsObj[j].split('/')[1] %>"></script>
+    <% } else { %> 
+        <script type="text/javascript" src="../<%= jsObj[j] %>"></script>
+    <% } %>  
+  <% } %>
+</body>
+</html>
