@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import Count from '../components/Count';
 
-import styles from './app.less';
+// import styles from './app.less';
 
 function App(props) {
   return (

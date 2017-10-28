@@ -4,18 +4,21 @@
  * @Last Modified by: mikey.zhaopeng
  * @Last Modified time: 2017-10-27 16:11:06
  */
-import dva, { connect } from 'dva';
-
+import dva from 'dva';
+// 实例化一个app
 const app = dva();
 
-app.use({})
+// 使用插件
+app.use({});
 
-app.model(require('./models/count'))
+// 添加数据模型
+app.model(require('./models/count'));
 
-app.router(require('./router'))
+// 添加路由
+app.router(require('./router'));
 
-
-app.start('#root')
+// 运行
+app.start('#root');
 
 
 

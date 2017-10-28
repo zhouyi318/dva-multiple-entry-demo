@@ -15,7 +15,8 @@ const svgSpriteDirs = [
 let roadhogrcConfig = {
   entry: {
     // 'Demo1/app1':path.join(__dirname,'/src/App/demo1/entry.js'),
-    'Demo2/app2':path.join(__dirname,'/src/App/demo2/entry.js'),
+    // 'Demo2/app2':path.join(__dirname,'/src/App/demo2/entry.js'),
+    'Demo3/app3':path.join(__dirname,'/src/App/demo3/entry.js'),
   },
   publicPath: "",
   theme:{},

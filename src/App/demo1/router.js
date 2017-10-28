@@ -1,8 +1,8 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import {Router, Route, Switch} from 'dva/router';
 import Index from './routes/Index';
 
-function RouterConfig({ history }) {
+function RouterConfig({history}) {
   return (
     <Router history={history}>
       <Switch>

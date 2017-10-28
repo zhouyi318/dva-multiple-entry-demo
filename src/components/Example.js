@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Example = (props) => {
+  console.log(props)
   return (
     <div>
       Example
@@ -8,7 +9,6 @@ const Example = (props) => {
   );
 };
 
-Example.propTypes = {
-};
+Example.propTypes = {};
 
 export default Example;

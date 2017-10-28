@@ -1,15 +1,15 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import {Router, Route, Switch} from 'dva/router';
 
 import App from './routes/app';
 
-const RouterConfig = ({history, app}) => {
+const RouterConfig = ({history}) => {
   return (
-      <Router history={ history }>
-        <Switch>
-          <Route exact path="/" component={ App } />
-        </Switch>
-      </Router>
+    <Router history={history}>
+      <Switch>
+        <Route exact path="/" component={App}/>
+      </Switch>
+    </Router>
   )
 }
 

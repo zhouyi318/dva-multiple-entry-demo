@@ -1,5 +1,5 @@
 import request from '../utils/request';
 
-export function query() {
+export default function query() {
   return request('/api/users');
 }
