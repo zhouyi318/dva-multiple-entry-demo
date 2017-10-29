@@ -1,13 +1,12 @@
 const fs = require('fs');
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const webpakConfig = (webpackConfig, env) => {
-    let [html, htmlArrObj] = [
-        [],
-        []
-    ];
-
+    // 判断环境
+    const production = env === 'production';
+    let [html, htmlArrObj] = [[],[]];
     // 添加简写
     webpackConfig.resolve.alias = {
         "mock": path.join(__dirname, '/mock'),
@@ -16,14 +15,12 @@ const webpakConfig = (webpackConfig, env) => {
         "components": path.join(__dirname, '/src/components'),
         "models": path.join(__dirname, '/src/models'),
         "services": path.join(__dirname, '/src/services'),
-        "utils": path.join(__dirname, '/src/utils'),
+        "utils": path.join(__dirname, '/src/utils')
     }
-
     // 提取入口名称
     for (let k in webpackConfig.entry) {
         html.push(k)
     }
-
     for (let i = 0; i < html.length; i++) {
         htmlArrObj[i] = {};
         htmlArrObj[i].excludeChunks = [];
@@ -34,7 +31,6 @@ const webpakConfig = (webpackConfig, env) => {
             }
         }
     }
-
     //添加HTML模板
     for (let n = 0; n < htmlArrObj.length; n++) {
         webpackConfig.plugins.push(new HtmlWebpackPlugin({
@@ -45,6 +41,11 @@ const webpakConfig = (webpackConfig, env) => {
             inject: false
         }))
     }
+
+    // 设置__DEV__，共HTML中判断环境
+    webpackConfig.plugins.push(new webpack.DefinePlugin({
+        __DEV__: production
+    }))
 
     // 写入配置文件
     fs.exists(path.join(__dirname, 'message.config.txt'), function(exists) {
@@ -75,5 +76,4 @@ const webpakConfig = (webpackConfig, env) => {
 
     return webpackConfig
 }
-
 export default webpakConfig
