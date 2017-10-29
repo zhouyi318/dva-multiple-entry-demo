@@ -4,7 +4,6 @@ import styles from './index.less';
 const Count = (props) => {
     // 获取父组件传来的 models
     let countProps = props.props;
-    console.log(countProps.count.number)
     return (
         <div className={styles.normal}>
             <h2>实现购物车“添加/减少”商品</h2>

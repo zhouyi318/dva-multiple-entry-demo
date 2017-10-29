@@ -1,4 +1,5 @@
 import key from 'keymaster';
+import * as countAjax from '../services/count'
 
 // 第十三步，增加 delay 函数 time 为 *todo 携带来的参数
 function delay(time) {
@@ -13,7 +14,8 @@ export default {
     namespace : 'count',
     // 将计数器开始值默认为 0
     state : {
-        number: 0
+        number: 0,
+        string:''
     },
     reducers : {
         // 增加
@@ -29,10 +31,19 @@ export default {
             return {
                 ...state
             }
+        },
+        // 保存数据
+        save(state,{payload:{data:string}}) {
+            return {...state,string}
         }
     },
     // 添加副作用
     effects : {
+        *fetch({payload}, {call, put}){
+            const {data} = yield call(countAjax.fetch);
+            yield call(delay,2000);
+            yield put({type: 'save',payload: {data}});
+        },
         *todo(action, {call, put}) {
             // 先运行 reducers 中的 add 方法
             yield put({type: 'add'});
@@ -44,7 +55,16 @@ export default {
     },
     // 绑定键盘事件
     subscriptions : {
-        /* 订阅键盘事件 */
+        // 监听事件
+        setup({dispatch, history}) {
+            return history.listen(({pathname}) => {
+                if (pathname === '/') {
+                    dispatch({type: 'fetch'})
+                }
+            })
+        },
+
+        // 键盘事件
         keyboardWatcher({dispatch}) {
             key('⌘+up, ctrl+up', () => {
                 dispatch({type: 'todo'})

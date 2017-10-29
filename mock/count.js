@@ -1,10 +1,10 @@
 import Mock from 'mockjs'
 
 export default {
-  ['GET /api/users'](req, res) {
+  ['GET /api/count'](req, res) {
     let data = Mock.mock({
         "string|1-10": "★"
     })
-    res.status(200).json(data)
+    res.status(200).json(data.string)
   }
 }

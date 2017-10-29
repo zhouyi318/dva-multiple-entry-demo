@@ -4,6 +4,8 @@ import styles from './index.less';
 const Count = (props) => {
     // 获取父组件传来的 models
     props = props.props;
+    // 打印数据
+    console.log(props.count)
     return (
         <div className={styles.normal}>
             <h2>实现购物车“添加/减少”商品</h2>
@@ -12,15 +14,19 @@ const Count = (props) => {
             <div className={styles.toggle}>
                 <button
                     className={styles.add}
+                    // 当点击 + 的时候，dispatch 一个action => 'count/todo'
                     onClick={() => {
                     props.dispatch({type: 'count/todo'})
                 }}>+</button>
                 <button
                     className={styles.minus}
+                    // 当点击 - 的时候，dispatch 一个action => 'count/minus'
                     onClick={() => {
                     props.dispatch({type: 'count/minus'})
                 }}>-</button>
             </div>
+            <hr/>
+            <babel>Ajax请求数据：<input type="text" name="Ajax请求数据" value={props.count.string} /></babel>   
         </div>
     )
 };

@@ -13,6 +13,7 @@ function App(props) {
   )
 }
 
+// 将数据吐出给组件props
 function mapStateToProps(state) {
     return {
         ...state
@@ -21,4 +22,5 @@ function mapStateToProps(state) {
 
 App.propTypes = {};
 
+// 用 connect 将数据和组件链接 
 export default connect(mapStateToProps)(App);
