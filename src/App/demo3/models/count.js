@@ -47,7 +47,7 @@ export default {
             yield put({
                 type: 'save',
                 payload: {
-                    data,
+                    data
                 }
             });
         },
