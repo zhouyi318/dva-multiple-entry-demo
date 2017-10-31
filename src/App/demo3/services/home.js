@@ -1,5 +1,5 @@
 import request from 'utils/request';
 
 export function fetch() {
-    return request('/api/users')
+    return request('/api/list');
 }
