@@ -1,4 +1,5 @@
 const path = require('path');
+const pxtorem = require('postcss-pxtorem');
 
 const svgSpriteDirs = [
   require.resolve('antd-mobile').replace(/warn\.js$/, ''), 
@@ -8,8 +9,8 @@ const svgSpriteDirs = [
 export default {
   entry: {
     // 'Demo1/app1':path.join(__dirname,'/src/App/demo1/entry.js'),
-    'Demo2/app2':path.join(__dirname,'/src/App/demo2/entry.js'),
-    // 'Demo3/app3':path.join(__dirname,'/src/App/demo3/entry.js'),
+    // 'Demo2/app2':path.join(__dirname,'/src/App/demo2/entry.js'),
+    'Demo3/app3':path.join(__dirname,'/src/App/demo3/entry.js'),
   },
   theme:{},
   publicPath: "",
@@ -21,6 +22,11 @@ export default {
       "iOS >= 8", "Android >= 4"
     ]
   },
+  extraPostCSSPlugins: [
+    pxtorem({
+      propWhiteList: [],
+    }),
+  ],
   env: {
     development: {
       extraBabelPlugins: [
