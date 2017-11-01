@@ -26,7 +26,11 @@ const Count = (props) => {
                 }}>-</button>
             </div>
             <hr/>
+<<<<<<< HEAD
             <p className={styles.ajax}>Ajax请求数据：</p>
+=======
+            <p>Ajax请求数据：</p> 
+>>>>>>> 8fc3f34955c51f0000a547179c97ec76469f3a0d
             <p>{props.count.string}</p>   
         </div>
     )

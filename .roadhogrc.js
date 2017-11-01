@@ -8,8 +8,13 @@ const svgSpriteDirs = [
 
 export default {
   entry: {
+<<<<<<< HEAD
     // 'Demo1/app1':path.join(__dirname,'/src/App/demo1/entry.js'),
     // 'Demo2/app2':path.join(__dirname,'/src/App/demo2/entry.js'),
+=======
+    'Demo1/app1':path.join(__dirname,'/src/App/demo1/entry.js'),
+    'Demo2/app2':path.join(__dirname,'/src/App/demo2/entry.js'),
+>>>>>>> 8fc3f34955c51f0000a547179c97ec76469f3a0d
     'Demo3/app3':path.join(__dirname,'/src/App/demo3/entry.js'),
   },
   theme:{},
